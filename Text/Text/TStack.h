@@ -16,6 +16,8 @@ public:
 	bool IsEmpty();
 	bool IsFull();
 	void ClearSt();
+	int Size();
+	int GetSize();
 };
 template<class T>
 TStack<T>::TStack<T>(int _size)
@@ -90,4 +92,13 @@ template<class T>
 void TStack<T>::ClearSt()
 {
 	num = -1;
+}
+template<class T>
+int TStack<T>::Size()
+{
+	return num;
+}template<class T>
+int TStack<T>::GetSize()
+{
+	return size;
 }
