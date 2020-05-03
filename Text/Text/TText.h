@@ -33,5 +33,5 @@ public:
 	int Reset();   //установить на первую запись
 	int IsEnd();   //конец ?
 	int GoNext();   //переход к след записи
-	void Print(TTextLink *p);
+	void Print(TTextLink *p,TTextLink *curr);
 };

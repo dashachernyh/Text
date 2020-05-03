@@ -97,7 +97,8 @@ template<class T>
 int TStack<T>::Size()
 {
 	return num;
-}template<class T>
+}
+template<class T>
 int TStack<T>::GetSize()
 {
 	return size;

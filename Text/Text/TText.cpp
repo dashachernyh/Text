@@ -8,7 +8,7 @@ using namespace std;
 TText::TText()
 {
 	pFirst = NULL;
-	while (!Stack.IsEmpty()) Stack.Pop();
+	Stack.ClearSt();
 }
 TTextLink* TText::GetpCurr()
 {
@@ -17,7 +17,7 @@ TTextLink* TText::GetpCurr()
 void TText::GoFirstLink()
 {
 	pCurr = pFirst;
-	while (!Stack.IsEmpty()) Stack.Pop();
+	Stack.ClearSt();
 }
 void TText::GoNextLink()
 {
@@ -191,24 +191,27 @@ int TText::GoNext()
 	return false;
 }
 
-void TText::Print(TTextLink *p)
+void TText::Print(TTextLink *p,TTextLink *curr)
 {
+
 	if (p)
 	{
 		string s;
 		int tab = Stack.Size();
 		for (int i = 0; i < tab; i++)  s += ' ';
 		s += p->str;
-		cout << s << endl;
+		if (curr == p) cout << "/pCurr/ " << s << endl;
+		else cout<<"/-----/ "<<s<< endl;
 		if (p->pDown)
 		{
-			cout << '{' << endl;
+			//cout << '{' << endl;
 			Stack.Push(p);
-			Print(p->pDown);
+			Print(p->pDown,curr);
 			Stack.Pop();
-			cout << '}' << endl;
+			//cout << '}' << endl;
 		}
 		if (p->pNext)
-			Print(p->pNext);
+			Print(p->pNext,curr);
 	}
+	pCurr = curr;
 }
