@@ -204,14 +204,12 @@ void TText::Print(TTextLink *p,TTextLink *curr)
 		else cout<<"/-----/ "<<s<< endl;
 		if (p->pDown)
 		{
-			//cout << '{' << endl;
 			Stack.Push(p);
 			Print(p->pDown,curr);
 			Stack.Pop();
-			//cout << '}' << endl;
 		}
-		if (p->pNext)
-			Print(p->pNext,curr);
+		if (p->pNext) Print(p->pNext, curr);
+
 	}
 	pCurr = curr;
 }

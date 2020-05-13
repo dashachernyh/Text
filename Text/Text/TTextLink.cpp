@@ -36,7 +36,7 @@ void TTextLink::InitMemSystem(int size)
 	TTextLink *pLink = MemHeader.pFirst;
 	for (int i = 0; i < size - 1; i++)
 	{
-		pLink->str[0] = '\0';
+	    pLink->str[0] = '\0';
 		pLink->pNext = pLink + 1;
 		pLink++;
 	} 
@@ -46,9 +46,8 @@ void TTextLink::InitMemSystem(int size)
 
 void TTextLink::PrintFreeLink()
 {
-	TTextLink *pLink = MemHeader.pFree;
 	cout << "List of free links" << endl;
-	for (pLink; pLink != NULL; pLink=pLink->pNext)
+	for (TTextLink *pLink = MemHeader.pFree; pLink != NULL; pLink=pLink->pNext)
 	{
 		cout << pLink->str << endl;
 	}
@@ -65,7 +64,10 @@ void TTextLink::MemCleaner(TText& txt)
 	TTextLink *pLink;
 	for (pLink=MemHeader.pFree; pLink!=NULL;pLink=pLink->pNext)
 	{
-		strcpy_s(pLink->str, "&&&");
+		string tmp1 = "&&&";
+		tmp1 +=string(pLink->str);
+		
+		strncpy_s(pLink->str, tmp1.c_str(),80);
 	}
 	//сборка мусора
 	for (pLink = MemHeader.pFirst; pLink<=MemHeader.pLast; pLink++)

@@ -33,4 +33,5 @@ public:
 	{
 		return os << Link.str;
 	}
+	friend class TText;
 };
